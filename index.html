@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js</title>
+</head>
+<style>
+    canvas {
+        width: 300px;
+        height: 200px;
+        border: 1px solid black;
+    }
+    
+    #btn {
+        position: fixed;
+        top: 50px;
+        right: 50px;
+    }
+</style>
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js cours</h1>
+        <button v-on:click="augmente">Augmente</button>
+        <button v-on:click="baisse">Baisse</button>
+        <h2>Compteur : {{ compteur }}</h2>
+
+        <h3>{{ compteur ? 'il est true' : 'il est false' }}</h3>
+
+        <p v-html="htmlBrut">{{ htmlBrut}}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#mon-app',
+            data: {
+                compteur: 0,
+                valeur: "",
+                htmlBrut: '<p> Mon HTML Brut </p>'
+            },
+            methods: {
+                augmente: function() {
+                    this.compteur++;
+                },
+                baisse: function() {
+                    this.compteur--;
+                },
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>
