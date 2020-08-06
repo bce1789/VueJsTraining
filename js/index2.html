@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js</title>
+</head>
+<style>
+    canvas {
+        width: 300px;
+        height: 200px;
+        border: 1px solid black;
+    }
+    
+    #btn {
+        position: fixed;
+        top: 50px;
+        right: 50px;
+    }
+</style>
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js cours</h1>
+        <button v-on:click="compteurA++">Augmente</button>
+        <!-- 
+            expression avec ++ et --
+         -->
+        <button v-on:click="compteurA--">Baisse</button>
+        <h2>Compteur : {{ compteurA }}</h2>
+        <p>{{ checkValeur() }}</p>
+        <!-- Ne pas oublier les parenthése aprés checkValeur parcequ'on appel directement la function -->
+        <button v-on:click="compteurB++">Augmente</button>
+        <p>{{ compteurB }} &&& {{ memo }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#mon-app',
+            data: {
+                compteurA: 0,
+                compteurB: 0,
+            },
+            methods: {
+                checkValeur: function() {
+                    console.log('la fonction s\'est lancé');
+                    return this.compteurA > 10 ? 'Supérieur à 10' : 'inférieur à 10'
+                }
+            },
+            computed: {
+                //Valeur calculé/ La methode computed vas se lancer quand les données a l'interieur vont changé
+
+                memo: function() {
+                    console.log('MEMO s\'est lancé');
+                    return this.compteurA > 10 ? 'Supérieur à 10' : 'inférieur à 10'
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
