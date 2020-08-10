@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js</title>
+</head>
+<style>
+    .box {
+        width: 250px;
+        height: 250px;
+        border: 1px solid black;
+    }
+    
+    .red {
+        background-color: crimson;
+    }
+</style>
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js cours</h1>
+        <button v-on:click="toggleColor = !toggleColor">Toggle la couleur</button>
+        <!-- !toggleColor veut dire l'inverse -->
+        <div class="box" v-bind:class="{ red : toggleColor }"></div>
+        <!-- On applique la class red suelement si toggleColor est true  -->
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#mon-app',
+            data: {
+                toggleColor: false
+            }
+        })
+    </script>
+</body>
+
+</html>

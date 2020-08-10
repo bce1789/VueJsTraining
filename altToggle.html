@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js</title>
+</head>
+<style>
+    .box {
+        width: 250px;
+        height: 250px;
+        border: 1px solid black;
+    }
+    
+    .red {
+        background-color: crimson;
+    }
+    
+    .bordure {
+        border: 10px solid #333;
+    }
+</style>
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js cours</h1>
+        <button v-on:click="toggleColor = !toggleColor">Toggle la couleur</button>
+
+        <div v-bind:class="[objCSS, toggleColor ? 'bordure' : '']"></div>
+        <!-- Appel la classe de compted objCSS, si toggleColor est true alor
+        on appelle la classe css bordure
+        sinon vide ''-->
+
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#mon-app',
+            data: {
+                toggleColor: false,
+            },
+            computed: {
+                objCSS: function() {
+                    return {
+                        red: this.toggleColor,
+                        box: true
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

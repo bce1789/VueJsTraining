@@ -28,11 +28,16 @@
             expression avec ++ et --
          -->
         <button v-on:click="compteurA--">Baisse</button>
+        <!-- <button (@ est le racourcie de v-on:) @click="compteurA--">Baisse</button> -->
         <h2>Compteur : {{ compteurA }}</h2>
         <p>{{ checkValeur() }}</p>
         <!-- Ne pas oublier les parenthése aprés checkValeur parcequ'on appel directement la function -->
         <button v-on:click="compteurB++">Augmente</button>
         <p>{{ compteurB }} &&& {{ memo }}</p>
+
+        <a v-bind:href="compteurA">Hello</a>
+        <!-- version raccourcie -->
+        <!-- <a (les deux points remplace le v-bind:):href="compteurA">Hello</a> -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -48,6 +53,19 @@
                     console.log('la fonction s\'est lancé');
                     return this.compteurA > 10 ? 'Supérieur à 10' : 'inférieur à 10'
                 }
+            },
+            watch: {
+                compteurA: function() {
+                    // La function fléché permet de prendre le this de base (la function fléché n'as pas de this par default)
+                    // Sinon il aurait fallut écrire
+                    // var ctx = this;
+                    setTimeout(() => {
+                        this.compteurA = 0;
+                        //  et écrire pour remplacer this
+                        // ctx.compteurA = 0;
+                    }, 1500)
+                }
+
             },
             computed: {
                 //Valeur calculé/ La methode computed vas se lancer quand les données a l'interieur vont changé
